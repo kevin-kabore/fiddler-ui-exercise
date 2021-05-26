@@ -2,6 +2,7 @@
 import * as React from 'react'
 import {xl, lg} from '../styles/sizes'
 import {Row, Column} from '../components/lib'
+import {Tabs, TabList, Tab, TabPanels, TabPanel} from '../components/tabs'
 
 function Main() {
   return (
@@ -15,7 +16,25 @@ function Main() {
         sed do eiusmod tempor incididunt ut labore et dolore
       </p>
       <div>
-        <div>This will contain our tab headers</div>
+        <Tabs>
+          <TabList>
+            <Tab>1</Tab>
+            <Tab>2</Tab>
+            <Tab>3</Tab>
+          </TabList>
+
+          <TabPanels>
+            <TabPanel>
+              <p>one!</p>
+            </TabPanel>
+            <TabPanel>
+              <p>two!</p>
+            </TabPanel>
+            <TabPanel>
+              <p>three!</p>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
         <Column gap="$lg">
           <Row gap="$lg">
             <div>Box with fixed height</div>
