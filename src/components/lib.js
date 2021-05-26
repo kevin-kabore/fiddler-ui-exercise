@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled'
+import {xs, sm, md, lg, xl} from '../styles/sizes'
 
 const flexJustify = {
   center: {justifyContent: 'center'},
@@ -9,25 +10,31 @@ const flexJustify = {
 }
 
 const gaps = {
-  $sm: {gap: '.25em'},
-  $md: {gap: '.5em'},
-  $lg: {gap: '.75em'},
-  $xl: {gap: '1em'},
+  $xs: {gap: xs},
+  $sm: {gap: sm},
+  $md: {gap: md},
+  $lg: {gap: lg},
+  $xl: {gap: xl},
 }
 
 const padding = {
-  $sm: {padding: '.25em'},
-  $md: {padding: '.5em'},
-  $lg: {padding: '.75em'},
-  $xl: {padding: '1em'},
+  $xs: {padding: xs},
+  $sm: {padding: sm},
+  $md: {padding: md},
+  $lg: {padding: lg},
+  $xl: {padding: xl},
 }
 const Row = styled.div(
   {
     display: 'flex',
   },
-  ({gap = '$md'}) => gaps[gap],
-  ({pad = '$md'}) => padding[pad],
-  ({justify = 'start'}) => flexJustify[justify],
+  ({gap = '$md', pad = '$md', justify = 'start', ...props}) => ({
+    ...gaps[gap],
+    ...padding[pad],
+    ...flexJustify[justify],
+    ...(props.width ? {width: props.width} : null),
+    ...(props.height ? {height: props.height} : null),
+  }),
 )
 
 const Column = styled.div(
@@ -35,9 +42,13 @@ const Column = styled.div(
     display: 'flex',
     flexDirection: 'column',
   },
-  ({gap = '$md'}) => gaps[gap],
-  ({pad = '$md'}) => padding[pad],
-  ({justify = 'start'}) => flexJustify[justify],
+  ({gap = '$md', pad = '$md', justify = 'start', ...props}) => ({
+    ...gaps[gap],
+    ...padding[pad],
+    ...flexJustify[justify],
+    ...(props.width ? {width: props.width} : null),
+    ...(props.height ? {height: props.height} : null),
+  }),
 )
 
 export {Row, Column}

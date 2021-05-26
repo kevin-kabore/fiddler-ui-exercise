@@ -5,10 +5,15 @@ import * as mq from './styles/media-queries'
 import * as colors from './styles/colors'
 import {Sidebar} from './components/sidebar'
 import {Row, Column} from './components/lib'
+import {Main} from './screens/main'
 
 function App() {
   return (
-    <div>
+    <div
+      css={{
+        display: 'flex',
+      }}
+    >
       <Global
         styles={css`
           body {
@@ -52,6 +57,7 @@ function App() {
           <div>Sidebar child 4</div>
         </Column>
       </Sidebar>
+      <Main />
     </div>
   )
 }
